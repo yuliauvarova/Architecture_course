@@ -1,0 +1,26 @@
+@startuml
+class AdditinalInformation.Student {
+- String name
++ int age
+# String id
++ void study()
+# void takeExam()
+- void sleep()
++ {static} void staticMethod()
++ String toString()
+}
+interface AdditinalInformation.Payable {
+~ void payTuition()
+}
+class AdditinalInformation.CollegeStudent {
+~ String collegeName
++ void payTuition()
+}
+class AdditinalInformation.Main {
++ {static} void main(String[])
+}
+
+
+AdditinalInformation.Payable <|.. AdditinalInformation.CollegeStudent
+AdditinalInformation.Student <|-- AdditinalInformation.CollegeStudent
+@enduml

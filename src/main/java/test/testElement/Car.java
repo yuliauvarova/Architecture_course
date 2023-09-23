@@ -1,4 +1,4 @@
-package testElement;
+package test.testElement;
 
 public class Car extends Vehicle implements Drivable {
     FuelType fuelType;

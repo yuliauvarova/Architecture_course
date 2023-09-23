@@ -1,4 +1,4 @@
-package testElement;
+package test.testElement;
 
 // Интерфейс (Interface)
 interface Drivable {

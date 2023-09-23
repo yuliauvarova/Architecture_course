@@ -1,0 +1,38 @@
+@startuml
+class HW_1.Worker {
++ double calculateSalary()
++ String toString()
+}
+class HW_1.Program {
+~ {static} Random random
+~ {static} Employee generateEmployee()
++ {static} void main(String[])
+}
+class HW_1.SalaryComparator {
++ int compare(Employee,Employee)
+}
+class HW_1.WorkingTimeComparator {
+}
+class HW_1.Freelancer {
++ double calculateSalary()
++ String toString()
+}
+abstract class HW_1.Employee {
+# String name
+# String surname
+# double salary
+# int workingHours
++ int getWorkingHours()
++ String getName()
++ String getSurname()
++ double getSalary()
++ {abstract}double calculateSalary()
++ int compareTo(Employee)
+}
+
+
+HW_1.Employee <|-- HW_1.Worker
+java.util.Comparator <|.. HW_1.SalaryComparator
+HW_1.Employee <|-- HW_1.Freelancer
+HW_1.Comparable <|.. HW_1.Employee
+@enduml
