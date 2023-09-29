@@ -1,0 +1,43 @@
+@startuml
+' Определение классов и интерфейсов
+class CalculatorPresenter {
+  - View calculatorView
+  - Model calculatorModel
+  + void onCalculate(String operation, double a, double b)
+  + void onClear()
+}
+
+class CalculatorModel {
+  + double add(double a, double b)
+  + double subtract(double a, double b)
+  + double multiply(double a, double b)
+  + double divide(double a, double b)
+}
+
+interface CalculatorView {
+  ~ void setObserver(ViewObserver)
+  ~ void updateResult(double result)
+  ~ void clearScreen()
+}
+
+class MainProgram {
+  + {static} void main(String[])
+}
+
+interface ViewObserver {
+  ~ void onCalculate(String operation, double a, double b)
+  ~ void onClear()
+}
+
+
+ViewObserver <|.. CalculatorPresenter
+
+
+CalculatorPresenter o-- "1..1" CalculatorView : uses
+CalculatorPresenter o-- "1..1" CalculatorModel : uses
+
+'простая зависимость'
+MainProgram ..> ViewObserver : initiates
+
+CalculatorView "0..1" -- "1" ViewObserver : updates
+@enduml

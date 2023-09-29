@@ -1,0 +1,114 @@
+@startuml
+class HW_3_BabysitterExchange.Project.Cash {
++ void doTransaction(int)
+}
+
+class HW_3_BabysitterExchange.Project.PayByBankCard {
++ void doTransaction(int)
+}
+
+class HW_3_BabysitterExchange.Project.Kid {
+~ int kidId
+- {static} int counter
+~ String name
+~ int age
++ String toString()
+}
+
+class HW_3_BabysitterExchange.Project.PayByPhone {
++ void doTransaction(int)
+}
+
+interface HW_3_BabysitterExchange.Project.takingOrder {
+~ void takeOrder(int)
+}
+
+class HW_3_BabysitterExchange.Project.KidsRepresentative {
+~ int kidsRepresentativeId
+- {static} int counter
+~ Status representativeStatus
+~ String name
+~ List<Kid> kids
++ Order makeOrder()
++ void leaveFeedback()
++ String toString()
+}
+
+enum HW_3_BabysitterExchange.Project.Status {
++  PARENT
++  GRANDPARENT
++  ADOPTIVEPARENT
++  OTHERSTATUS
+}
+
+abstract class HW_3_BabysitterExchange.Project.Executor {
+~ int executorId
+- {static} int counter
+~ String name
+~ int pricePerHour
+~ int age
++ String getName()
++ int getPricePerHour()
++ int getAge()
+}
+
+class HW_3_BabysitterExchange.Project.Main {
++ {static} void main(String[])
+}
+
+class HW_3_BabysitterExchange.Project.Babysitter {
+~ int ageOfKidMinimal
+~ int ageOfKidMaximal
++ void takeOrder(int)
++ void leaveFeedback()
++ String toString()
+}
+
+class HW_3_BabysitterExchange.Project.Teacher {
+~ String subject
++ String toString()
++ void takeOrder(int)
++ void leaveFeedback()
+}
+
+interface HW_3_BabysitterExchange.Project.Payments {
+~ void doTransaction(int)
+}
+
+class HW_3_BabysitterExchange.Project.Order {
+~ int orderId
+- {static} int counter
+~ KidsRepresentative client
+~ Date date
+~ Payments payments
++ void doPayment(int)
++ String toString()
++ void setClient(KidsRepresentative)
+}
+
+interface HW_3_BabysitterExchange.Project.LeavingFeedback {
+~ void leaveFeedback()
+}
+
+'Способы оплаты имплементируют интерфейс оплат
+Payments <|.. Cash
+Payments <|.. PayByBankCard
+Payments <|.. PayByPhone
+
+'Имплементация интерфесов классами KidsRepresentative и Executor
+LeavingFeedback <|.. KidsRepresentative
+takingOrder <|.. Executor
+LeavingFeedback <|.. Executor
+
+'Babysitter и Teacher наследуются от Executor
+Executor <|-- Babysitter
+Executor <|-- Teacher
+
+'Композиция - Ребенок в этом контексте не может существовать без взрослого,
+'родитель имеет минимум одного ребенка
+KidsRepresentative "1" *-- "1..7" Kid : owns >
+
+'Композиция: заказ не может существовать без заказчика.
+'У одного заказчика может быть много заказов.
+Order "1..n" *-- "1" KidsRepresentative : is created
+@enduml

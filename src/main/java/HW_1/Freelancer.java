@@ -1,7 +1,6 @@
 package HW_1;
 
 public class Freelancer extends Employee {
-
     public Freelancer(String name, String surname, double salary, int workingHours) {
         super(name, surname, salary);
         this.workingHours = workingHours;
