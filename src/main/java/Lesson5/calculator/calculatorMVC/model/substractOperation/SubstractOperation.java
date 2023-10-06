@@ -1,2 +1,4 @@
-package Lesson5.calculator.calculatorMVC.model.substractOperation;public class SubstractOperation {
+package Lesson5.calculator.calculatorMVC.model.substractOperation;
+
+public class SubstractOperation {
 }

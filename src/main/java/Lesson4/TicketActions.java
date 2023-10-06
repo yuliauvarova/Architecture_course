@@ -1,2 +1,9 @@
-package Lesson4;public interface TicketActions {
+package Lesson4;
+
+interface TicketActions {
+    boolean reserveTicket();
+    boolean deductFunds();
+    boolean confirmPurchase();
+    void updateTicketAvailability();
+    boolean cancelReservation();
 }

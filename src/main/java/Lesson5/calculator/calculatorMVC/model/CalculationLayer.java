@@ -1,2 +1,4 @@
-package Lesson5.calculator.calculatorMVC.model;public class CalculationLayer {
+package Lesson5.calculator.calculatorMVC.model;
+
+public class CalculationLayer {
 }

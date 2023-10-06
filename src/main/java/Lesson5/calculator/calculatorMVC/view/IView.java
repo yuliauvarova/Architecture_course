@@ -1,2 +1,5 @@
-package Lesson5.calculator.calculatorMVC.view;public interface IView {
+package Lesson5.calculator.calculatorMVC.view;
+
+public interface IView {
+    void runCalculator();
 }
