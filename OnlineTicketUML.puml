@@ -1,0 +1,50 @@
+@startuml
+class Lesson4.Main {
++ {static} void main(String[])
+}
+class Lesson4.BusTicket {
+~ int number
++ boolean reserveTicket()
++ boolean deductFunds()
++ boolean confirmPurchase()
++ void updateTicketAvailability()
++ boolean cancelReservation()
+}
+interface Lesson4.UserActions {
+~ boolean authorize(String,String)
+~ boolean selectRoute(String,Date)
+~ boolean checkTicketAvailability()
+~ boolean checkFunds()
+}
+class Lesson4.User {
++ boolean authorize(String,String)
++ boolean selectRoute(String,Date)
++ boolean checkTicketAvailability()
++ boolean checkFunds()
++ boolean reserveTicket()
+- boolean performReservation()
+- boolean isRouteSelected()
+- boolean isAuthorized()
++ boolean deductFunds()
++ boolean confirmPurchase()
++ void updateTicketAvailability()
++ boolean cancelReservation()
+}
+abstract class Lesson4.Ticket {
+~ String routeId
+~ Date departureTime
+~ double price
+}
+interface Lesson4.TicketActions {
+~ boolean reserveTicket()
+~ boolean deductFunds()
+~ boolean confirmPurchase()
+~ void updateTicketAvailability()
+~ boolean cancelReservation()
+}
+
+
+Lesson4.Ticket <|-- Lesson4.BusTicket
+Lesson4.UserActions <|.. Lesson4.User
+Lesson4.TicketActions <|.. Lesson4.Ticket
+@enduml
