@@ -1,0 +1,75 @@
+@startuml
+class OutputSlice {
+~ void displayOutput(String)
+}
+
+class CalculationLayer {
++ double add(double,double)
++ double subtract(double,double)
++ double multiply(double,double)
++ double divide(double,double)
+}
+
+class InputOutputLayer {
+~ String getInput()
+~ void displayOutput(String)
+}
+interface IView {
+~ void runCalculator()
+}
+
+class InputSlice {
+~ String getInput()
+}
+
+class MultiplyOperation {
+~ double firstArg
+~ double secondArg
++ double multiply()
+}
+
+class DivideOperation {
+~ double firstArg
+~ double secondArg
++ double divide()
+}
+
+class ConsoleView {
+~ InputOutputLayer ioLayer
+~ CalculationLayer calcLayer
++ void runCalculator()
+}
+
+class DatabaseManagementSlice {
+~ void saveData(String)
+~ String fetchData()
+}
+
+class SumOperation {
+~ double firstArg
+~ double secondArg
++ double sum()
+}
+
+class SubtractOperation {
+~ double firstArg
+~ double secondArg
++ double subtract()
+}
+
+'ConsoleView реализует интефейс IView
+IView <|.. ConsoleView
+
+'InputOutputLayer вызывает InputSlice и OutputSlice.
+'Все вычисления - внутри InputSlice и OutputSlice.
+InputOutputLayer o.. InputSlice : calls
+InputOutputLayer o.. OutputSlice : calls
+
+'CalculationLayer вызывает SubtractOperation, SumOperation, MultiplyOperation и DivideOperation.
+
+CalculationLayer o.. SubtractOperation : calls
+CalculationLayer o.. SumOperation : calls
+CalculationLayer o.. MultiplyOperation : calls
+CalculationLayer o.. DivideOperation : calls
+
+@enduml
