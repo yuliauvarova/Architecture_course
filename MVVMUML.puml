@@ -1,0 +1,24 @@
+@startuml
+class MVVMPatternDemo {
++ {static} void main(String[])
+}
+class BooksViewModel {
+- List<Book> books
++ String getDisplayableBooks()
++ void markBookAsRead(int)
+}
+class Book {
+- String title
+- boolean isRead
++ void markAsRead()
++ boolean isRead()
++ String toString()
+}
+
+'Аггрегация: View генерирует ViewModel при создании'
+MVVMPatternDemo "1" *-- "1" BooksViewModel : generates >
+
+'Аггрегация: ViewModel генерирует список Book при создании'
+BooksViewModel  *-- Book : generates >
+
+@enduml
