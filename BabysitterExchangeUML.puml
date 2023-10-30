@@ -1,13 +1,13 @@
 @startuml
-class HW_3_BabysitterExchange.Project.Cash {
+class Cash {
 + void doTransaction(int)
 }
 
-class HW_3_BabysitterExchange.Project.PayByBankCard {
+class PayByBankCard {
 + void doTransaction(int)
 }
 
-class HW_3_BabysitterExchange.Project.Kid {
+class Kid {
 ~ int kidId
 - {static} int counter
 ~ String name
@@ -15,15 +15,15 @@ class HW_3_BabysitterExchange.Project.Kid {
 + String toString()
 }
 
-class HW_3_BabysitterExchange.Project.PayByPhone {
+class PayByPhone {
 + void doTransaction(int)
 }
 
-interface HW_3_BabysitterExchange.Project.takingOrder {
+interface takingOrder {
 ~ void takeOrder(int)
 }
 
-class HW_3_BabysitterExchange.Project.KidsRepresentative {
+class KidsRepresentative {
 ~ int kidsRepresentativeId
 - {static} int counter
 ~ Status representativeStatus
@@ -34,14 +34,14 @@ class HW_3_BabysitterExchange.Project.KidsRepresentative {
 + String toString()
 }
 
-enum HW_3_BabysitterExchange.Project.Status {
+enum Status {
 +  PARENT
 +  GRANDPARENT
 +  ADOPTIVEPARENT
 +  OTHERSTATUS
 }
 
-abstract class HW_3_BabysitterExchange.Project.Executor {
+abstract class Executor {
 ~ int executorId
 - {static} int counter
 ~ String name
@@ -52,11 +52,11 @@ abstract class HW_3_BabysitterExchange.Project.Executor {
 + int getAge()
 }
 
-class HW_3_BabysitterExchange.Project.Main {
+class Main {
 + {static} void main(String[])
 }
 
-class HW_3_BabysitterExchange.Project.Babysitter {
+class Babysitter {
 ~ int ageOfKidMinimal
 ~ int ageOfKidMaximal
 + void takeOrder(int)
@@ -64,18 +64,18 @@ class HW_3_BabysitterExchange.Project.Babysitter {
 + String toString()
 }
 
-class HW_3_BabysitterExchange.Project.Teacher {
+class Teacher {
 ~ String subject
 + String toString()
 + void takeOrder(int)
 + void leaveFeedback()
 }
 
-interface HW_3_BabysitterExchange.Project.Payments {
+interface Payments {
 ~ void doTransaction(int)
 }
 
-class HW_3_BabysitterExchange.Project.Order {
+class Order {
 ~ int orderId
 - {static} int counter
 ~ KidsRepresentative client
@@ -86,7 +86,7 @@ class HW_3_BabysitterExchange.Project.Order {
 + void setClient(KidsRepresentative)
 }
 
-interface HW_3_BabysitterExchange.Project.LeavingFeedback {
+interface LeavingFeedback {
 ~ void leaveFeedback()
 }
 

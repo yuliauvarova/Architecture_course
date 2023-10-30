@@ -1,7 +1,7 @@
 package Lesson4;
 
 public class Main {
-    public static void main(String[] args) {
+    protected static void main(String[] args) {
         // Создаем экземпляр пользователя
         User user = new User();
 
